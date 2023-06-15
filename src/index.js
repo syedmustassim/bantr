@@ -4,13 +4,16 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import RouterPage from "../src/RouterPage";
 import { makeServer } from "./server";
+import { AuthProvider } from "./Context/AuthContext";
 
 makeServer();
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <RouterPage />
+      <AuthProvider>
+        <RouterPage />
+      </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

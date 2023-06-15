@@ -1,0 +1,66 @@
+.main-content{
+    height: 100vh;
+}
+
+.background-content img {
+    height: 100%;
+    width: 100%;
+    /* filter: opacity(80%); */
+    background-size: cover;
+    background-position: center;
+    /* filter: blur(10px); */
+  }
+
+  .home-container {
+    position: absolute;
+    /* height: 100%;
+    width: 100%; */
+    height: 550px;
+    width: 75%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: url("https://i.postimg.cc/v8p5Wpc3/tartt-kent.jpg") no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    /* background: black; */
+    /* filter: opacity(90%); */
+    /* display: flex; */
+  }
+
+  .home-container .home-content {
+    position: absolute;
+    width: 58%;
+    height: 100%;
+    top: -15  0px;
+    left: 0;
+    background: transparent;
+    /* filter: opacity(70%); */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 40px;
+    text-align: center;
+    color: white;
+  }
+
+  .home-content img {
+    width: 50%;
+    margin-top: -280px;
+  }
+  
+  .home-content h1 {
+    font-size: 35px;
+    margin-top: -250px;
+  }
+  
+  .home-container .auth-container {
+    width: 42%;
+    /* background: red; */
+    height: 100%;
+    top: 0;
+    right: 0;
+    position: absolute;
+  }
