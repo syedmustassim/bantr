@@ -3,7 +3,7 @@ import "./Login.css";
 import { useAuth } from "../Context/AuthContext";
 
 const Login = () => {
-  const { activeAuth, setActiveAuth } = useAuth();
+  const { setActiveAuth } = useAuth();
 
   const authHandler = () => {
     setActiveAuth(false);
@@ -14,8 +14,8 @@ const Login = () => {
       <form action="#">
         <h2> Sign In </h2>
         <div className="input-box">
-          <input type="email" required />
-          <label> Email </label>
+          <input type="text" name="username" required />
+          <label> Username </label>
         </div>
         <div className="input-box">
           <input type="password" required />
