@@ -8,7 +8,7 @@ export const AuthProvider = ({ children }) => {
   const [activeAuth, setActiveAuth] = useState(true);
 
   const navigate = useNavigate();
-  const location = useLocation();
+  // const location = useLocation();
 
   const localStorageToken = JSON.parse(localStorage.getItem("loginDetails"));
   const [token, setToken] = useState(localStorageToken?.token || "");
@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
         );
         setToken(token);
         setCurrentUser(foundUser);
-        navigate(location?.state?.from?.pathname || "/homefeed");
+        navigate("/homefeed");
       }
     } catch (error) {
       console.error(error);
@@ -52,7 +52,7 @@ export const AuthProvider = ({ children }) => {
         status,
         data: { encodedToken, createdUser },
       } = response;
-      if (status === 200) {
+      if (status === 201) {
         localStorage.setItem(
           "loginDetails",
           JSON.stringify({ token: encodedToken, user: createdUser })

@@ -1,0 +1,15 @@
+.sidebar-container{
+    border: 1px solid black;
+    width: 300px;
+    margin: 50px 10px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    padding: 10px;
+    font-size: 22px;
+}
+
+.sidebar-container h3:hover{
+    cursor: pointer;
+}
