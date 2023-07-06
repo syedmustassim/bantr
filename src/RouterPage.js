@@ -5,6 +5,8 @@ import { HomeFeed } from "../src/Pages/HomeFeed";
 import RequiresAuth from "./Components/RequiresAuth";
 import { Explore } from "./Pages/Explore";
 import { Profile } from "./Pages/Profile";
+import { Bookmark } from "./Pages/Bookmark";
+import { LikedPosts } from "./Pages/LikedPosts";
 
 const RouterPage = () => {
   return (
@@ -28,7 +30,23 @@ const RouterPage = () => {
         }
       />
       <Route
-        path="/profile"
+        path="/bookmark"
+        element={
+          <RequiresAuth>
+            <Bookmark />
+          </RequiresAuth>
+        }
+      />
+      <Route
+        path="/liked"
+        element={
+          <RequiresAuth>
+            <LikedPosts />
+          </RequiresAuth>
+        }
+      />
+      <Route
+        path="/profile/:userId"
         element={
           <RequiresAuth>
             <Profile />

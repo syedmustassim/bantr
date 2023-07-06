@@ -1,0 +1,135 @@
+.profile-container{
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    background: radial-gradient(
+      circle,
+      rgba(122, 174, 213, 1) 32%,
+      rgba(51, 122, 183, 1) 60%
+    );
+}
+
+.profile-heading{
+    text-align: center;
+    margin-bottom: 20px;
+    /* padding: 10px; */
+    color : black;
+    position: sticky; 
+    top: 0;
+    backdrop-filter: blur(8px);
+    /* border: 1px solid red; */
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-heading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* text-align: center; */
+}
+
+.profile-first{
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; */
+  /* border: 1px solid blue; */
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  /* border: 1px solid red; */
+  border-radius: 5px;
+}
+
+.profile-first img{
+  margin: 0;
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+.profile-image{
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  transform: translate(-50%,-50%);
+  border-radius: 50%;
+  width: 200px; 
+  height: 200px; 
+  border: 5px solid #fff; 
+  object-fit: cover;
+}
+
+.profile-heading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 700px;
+  margin-left: 250px;
+}
+
+.profile-heading-primary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 700px;
+  margin-top: 5px;
+}
+
+.profile-heading-primary h1 {
+  margin-bottom: 0.5rem;
+}
+
+.profile-heading-primary button {
+  margin-bottom: 0.5rem;
+}
+
+.profile-heading-secondary {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile-heading-secondary small {
+  margin: 10px;
+  font-size: 20px;
+}
+
+.profile-heading-bio{
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.profile-heading-bio h4{
+  padding: 5px;
+  font-size: 16px;
+}
+
+.profile-posts-content{
+  margin-top: 20px;
+}
+
+.profile-posts-content h2{
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.edit-profile-btn{
+  border: 1px solid black;
+  outline: none;
+  transition: 0.5s;
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+.edit-profile-btn:hover{
+  cursor: pointer;
+  background: black;
+  color: rgb(138, 128, 229);
+}
