@@ -1,14 +1,82 @@
 .suggested-sidebar{
     /* border: 1px solid black; */
     margin-top: 50px;
-    padding: 10px;
+    padding: 5px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     height: 500px;
-    margin-right: 10px;
+    margin-right: 5px;
+    margin-left: 10px;
+    position: sticky;
+    top: 0;
 }
 
-h1{
+.suggested-sidebar h1{
     margin-bottom: 15px;
 }
+  
+  .suggested-user-card {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    margin-bottom: 16px;
+    background-color:  #63a8e1;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s ease-in-out;
+    transition: 0.5s;
+    width: 100%;
+    cursor: pointer
+  }
+
+  .suggested-user-card button{
+    margin-left: auto;
+    outline: none;
+    border: 1px solid #216cb6;
+    background: #fff;
+    background-image: linear-gradient(to left, transparent 50%, #216cb6 50%);
+    background-size: 250%;
+    background-position: 100%;
+    transition: 0.5s;
+    color: black;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .suggested-user-card button:hover{
+    color: white;
+    background-position: 0%;
+  }
+
+  .suggested-user-card:hover {
+    transform: translateY(-2px);
+    background-color: blanchedalmond;
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+  }
+  
+  .user-info img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 16px;
+    border: 5px solid white;
+  }
+  
+  .name-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  
+  
+  
