@@ -7,6 +7,7 @@ import { PostCard } from "../Components/PostCard";
 
 import "./Profile.css";
 import { SuggestedUsers } from "../Components/SuggestedUsers";
+import { useEffect } from "react";
 
 export const Profile = () => {
   const { userId } = useParams();
@@ -23,13 +24,20 @@ export const Profile = () => {
     getUserByUserId,
   } = useUsers();
 
-  console.log(user, "user");
+  // console.log(user, "user");
+
+  useEffect(() => {
+    getUserByUserId(userId);
+  }, [userId, currentUser]);
+
+  console.log(user, "user obj");
 
   const selectedUser = users.find(
     (item) => item._id.toString() === userId.toString()
   );
 
-  console.log(selectedUser, "selected user");
+  // console.log(selectedUser, "selected user");
+  // console.log(currentUser, "lol");
 
   // console.log(selectedUser.username === currentUser?.username, "boolean check");
 
@@ -41,7 +49,7 @@ export const Profile = () => {
     (item) => item?.username === selectedUser?.username
   );
 
-  document.title = `${selectedUser?.firstName} ${selectedUser.lastName}`;
+  document.title = `${selectedUser?.firstName} ${selectedUser?.lastName}`;
 
   return (
     <div>

@@ -23,6 +23,7 @@ export const PostCard = ({ post }) => {
     addBookmark,
     removeBookmark,
     postInBookmark,
+    getUserByUserId,
   } = useUsers();
 
   const { likePostHandler, dislikePostHandler, likedByUser } = usePosts();
@@ -49,7 +50,7 @@ export const PostCard = ({ post }) => {
             className="avatar-img"
           />
           <div onClick={() => navigate(`/profile/${findUserWhosePost?._id}`)}>
-            <p>
+            <p className="user-name">
               {findUserWhosePost.firstName} {findUserWhosePost.lastName}
             </p>
             <span>{findUserWhosePost.createdAt}</span>

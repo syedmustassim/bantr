@@ -3,6 +3,7 @@ import { initialUserState, userReducer } from "../Reducer/userReducer";
 import { useAuth } from "./AuthContext";
 import {
   addBookmarkService,
+  followUserService,
   getAllBookmarksSerivce,
   getAllUsersService,
   getByUserIdService,
@@ -92,6 +93,20 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  const handleFollowUser = async (followUserId) => {
+    try {
+      const {
+        status,
+        data: { user, followUser },
+      } = await followUserService(followUserId, token);
+      if (status === 200) {
+        usersDispatch({ type: "FOLLOW_USER", payload: [followUser, user] });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getAllUsers();
   }, []);
@@ -107,6 +122,7 @@ export const UserProvider = ({ children }) => {
         getAllBookmarks,
         postInBookmark,
         getUserByUserId,
+        handleFollowUser,
       }}
     >
       {children}

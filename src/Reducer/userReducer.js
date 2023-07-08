@@ -2,6 +2,7 @@ export const initialUserState = {
   users: [],
   bookmarks: [],
   user: {},
+  followingUsers: [],
 };
 
 export const userReducer = (state, action) => {
@@ -16,6 +17,16 @@ export const userReducer = (state, action) => {
       return { ...state, bookmarks: action.payload };
     case "GET_USER":
       return { ...state, user: action.payload };
+    case "FOLLOW_USER":
+      return {
+        ...state,
+        users: state?.users?.map((user) => {
+          const updatedUser = action?.payload?.find(
+            ({ _id }) => _id === user._id
+          );
+          return updatedUser ? updatedUser : user;
+        }),
+      };
     default:
       return state;
   }

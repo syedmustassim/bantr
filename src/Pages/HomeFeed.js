@@ -5,35 +5,37 @@ import { Sidebar } from "../Components/Sidebar";
 import { SuggestedUsers } from "../Components/SuggestedUsers";
 import { useAuth } from "../Context/AuthContext";
 import { usePosts } from "../Context/PostsContext";
+import { useUsers } from "../Context/UserContext";
 import "./HomeFeed.css";
 
 export const HomeFeed = () => {
   const { currentUser } = useAuth();
-  // console.log(currentUser, "current user");
+
+  const {
+    usersState: { users },
+  } = useUsers();
+
+  const loggedInUser = users?.find(
+    (item) => item?.username === currentUser?.username
+  );
 
   const {
     postsState: { posts },
     filterPosts,
   } = usePosts();
 
-  // console.log(posts, "home feed");
-
-  // console.log(posts, "initial render");
-
   const postsFollowing = posts?.filter((post) =>
-    currentUser?.following.some(
+    loggedInUser?.following.some(
       (userFollowing) =>
         userFollowing.username === post.username ||
-        currentUser.username === post.username
+        loggedInUser.username === post.username
     )
   );
 
   const sortedPosts = filterPosts(postsFollowing);
 
   document.title = "Home || Bantr";
-  // console.log(sortedPosts, "sorted posts");
 
-  // console.log(currentUser, "mushu");
   return (
     <div>
       {/* <Navbar /> */}
