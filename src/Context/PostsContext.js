@@ -141,6 +141,7 @@ export const PostsProvider = ({ children }) => {
         filterPosts,
         createPost,
         deletePost,
+        editPost,
       }}
     >
       {children}

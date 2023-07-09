@@ -1,6 +1,7 @@
 import { useAuth } from "../Context/AuthContext";
 import { usePosts } from "../Context/PostsContext";
 import { useUsers } from "../Context/UserContext";
+import { Modal } from "./Modal";
 
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -16,6 +17,7 @@ import { FcLike } from "react-icons/fc";
 import { SlOptions } from "react-icons/sl";
 
 import "./PostCard.css";
+import { EditModal } from "./EditModal";
 
 export const PostCard = ({ post }) => {
   const { currentUser } = useAuth();
@@ -34,6 +36,7 @@ export const PostCard = ({ post }) => {
   const navigate = useNavigate();
 
   const [showOptions, setShowOptions] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const findUserWhosePost = users?.find(
     (item) => item.username === post.username
@@ -41,6 +44,14 @@ export const PostCard = ({ post }) => {
 
   const toggleOptions = () => {
     setShowOptions(!showOptions);
+  };
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -65,7 +76,7 @@ export const PostCard = ({ post }) => {
               </div>
               {showOptions ? (
                 <div className="options">
-                  <button>Edit</button>
+                  <button onClick={openModal}>Edit</button>
                   <button
                     onClick={(e) => {
                       deletePost(post?._id);
@@ -118,6 +129,11 @@ export const PostCard = ({ post }) => {
           <BsShare size={25} />
         </div>
       </div>
+      {isModalOpen && (
+        <Modal isOpen={isModalOpen} isClosed={closeModal}>
+          <EditModal post={post} isClosed={closeModal} />
+        </Modal>
+      )}
     </div>
   );
 };

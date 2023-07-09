@@ -87,6 +87,7 @@
 .post-heading-option {
     position: relative;
     display: inline-block;
+    cursor: pointer;
   }
 
 .options {

@@ -1,0 +1,51 @@
+.edit-modal{
+    display: flex;
+}
+
+.edit-modal img{
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+}
+
+.edit-modal-content textarea{
+    width: 600px;
+    height: 100px;
+    margin-left: 20px;
+    font-size: 18px;
+    border: none;
+    outline: none;
+}
+
+.edit-modal-save{
+    margin-left: 400px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #6ab5de;
+    margin-right: 20px;
+    transition: 0.4s;
+    font-weight: 500;
+}
+
+.edit-modal-save:hover{
+    background-color: #6ab5de;
+    cursor: pointer;
+    box-shadow: 0 0 5px 2px #6ab5de;
+}
+
+.edit-modal-cancel{
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #f7a2a2;
+    margin-right: 40px;
+    transition: 0.4s;
+    font-weight: 200;
+}
+
+.edit-modal-cancel:hover{
+    background-color: #f7a2a2;
+    cursor: pointer;
+    box-shadow: 0 0 5px 2px #f7a2a2;
+}
