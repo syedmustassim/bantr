@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import { TbHomeDot, TbCompass, TbBookmarkPlus, TbUser } from "react-icons/tb";
+import { BiLogOutCircle } from "react-icons/bi";
 import "./Sidebar.css";
 import { useAuth } from "../Context/AuthContext";
 
 export const Sidebar = () => {
   const logoImg = require("../Images/bantr-no-bg.png");
 
-  const { currentUser } = useAuth();
+  const { currentUser, logoutHandler } = useAuth();
   return (
     <div>
       <div className="sidebar-container">
@@ -35,6 +36,12 @@ export const Sidebar = () => {
             Profile
           </h3>
         </Link>
+        <button className="log-out-btn" onClick={logoutHandler}>
+          <div>
+            <BiLogOutCircle size={24} />
+            Logout
+          </div>
+        </button>
       </div>
     </div>
   );

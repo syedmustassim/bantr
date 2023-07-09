@@ -24,3 +24,25 @@
     text-decoration: none;
     color: black;
 }
+
+.log-out-btn{
+    background: rgb(219, 94, 94);
+    border: 0.5px solid rgb(219, 94, 94);
+    outline: none;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: 600;
+    transition: 0.5s;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.log-out-btn:hover{
+    border: 1px solid rgb(221, 63, 63);
+    background: rgb(221, 63, 63);
+}
+
+.log-out-btn div{
+    display: flex;
+    align-items: center;
+}
