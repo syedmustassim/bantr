@@ -2,6 +2,9 @@ import { useAuth } from "../Context/AuthContext";
 import { usePosts } from "../Context/PostsContext";
 import { useUsers } from "../Context/UserContext";
 
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+
 import {
   BsHeart,
   BsBookmarks,
@@ -13,7 +16,6 @@ import { FcLike } from "react-icons/fc";
 import { SlOptions } from "react-icons/sl";
 
 import "./PostCard.css";
-import { useNavigate } from "react-router-dom";
 
 export const PostCard = ({ post }) => {
   const { currentUser } = useAuth();
@@ -26,19 +28,20 @@ export const PostCard = ({ post }) => {
     getUserByUserId,
   } = useUsers();
 
-  const { likePostHandler, dislikePostHandler, likedByUser } = usePosts();
+  const { likePostHandler, dislikePostHandler, likedByUser, deletePost } =
+    usePosts();
 
   const navigate = useNavigate();
+
+  const [showOptions, setShowOptions] = useState(false);
 
   const findUserWhosePost = users?.find(
     (item) => item.username === post.username
   );
 
-  // console.log(post.likes.likeCount, "post details");
-
-  // console.log(post, "initial");
-
-  // console.log(postInBookmark(post?._id), "bookmark");
+  const toggleOptions = () => {
+    setShowOptions(!showOptions);
+  };
 
   return (
     <div>
@@ -55,9 +58,29 @@ export const PostCard = ({ post }) => {
             </p>
             <span>{findUserWhosePost.createdAt}</span>
           </div>
-          <div className="post-heading-option">
-            <SlOptions size={25} />
-          </div>
+          {findUserWhosePost?.username === currentUser?.username ? (
+            <div className="post-heading-option">
+              <div>
+                <SlOptions size={25} onClick={toggleOptions} />
+              </div>
+              {showOptions ? (
+                <div className="options">
+                  <button>Edit</button>
+                  <button
+                    onClick={(e) => {
+                      deletePost(post?._id);
+                    }}
+                  >
+                    Delete
+                  </button>
+                </div>
+              ) : (
+                <></>
+              )}
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
         <div className="post-content">
           <p>{post?.content}</p>

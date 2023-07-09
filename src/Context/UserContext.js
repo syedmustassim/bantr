@@ -8,13 +8,14 @@ import {
   getAllUsersService,
   getByUserIdService,
   removeBookmarkService,
+  unfollowUserService,
 } from "../Services/UserServices";
 
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [usersState, usersDispatch] = useReducer(userReducer, initialUserState);
-  const { token } = useAuth();
+  const { token, setCurrentUser } = useAuth();
 
   const getAllUsers = async () => {
     try {
@@ -102,6 +103,22 @@ export const UserProvider = ({ children }) => {
       if (status === 200) {
         usersDispatch({ type: "FOLLOW_USER", payload: [followUser, user] });
       }
+      setCurrentUser(user);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleUnfollowUser = async (followUserId) => {
+    try {
+      const {
+        status,
+        data: { user, followUser },
+      } = await unfollowUserService(followUserId, token);
+      if (status === 200) {
+        usersDispatch({ type: "UNFOLLOW_USER", payload: [followUser, user] });
+      }
+      setCurrentUser(user);
     } catch (error) {
       console.log(error);
     }
@@ -123,6 +140,7 @@ export const UserProvider = ({ children }) => {
         postInBookmark,
         getUserByUserId,
         handleFollowUser,
+        handleUnfollowUser,
       }}
     >
       {children}

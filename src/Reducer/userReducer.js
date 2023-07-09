@@ -21,10 +21,20 @@ export const userReducer = (state, action) => {
       return {
         ...state,
         users: state?.users?.map((user) => {
-          const updatedUser = action?.payload?.find(
+          const updatedUserValue = action?.payload?.find(
             ({ _id }) => _id === user._id
           );
-          return updatedUser ? updatedUser : user;
+          return updatedUserValue ? updatedUserValue : user;
+        }),
+      };
+    case "UNFOLLOW_USER":
+      return {
+        ...state,
+        users: state?.users?.map((user) => {
+          const updatedUserValue = action?.payload?.find(
+            ({ _id }) => _id === user._id
+          );
+          return updatedUserValue ? updatedUserValue : user;
         }),
       };
     default:

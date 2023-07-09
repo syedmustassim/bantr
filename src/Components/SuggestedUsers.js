@@ -15,17 +15,11 @@ export const SuggestedUsers = () => {
     (item) => item?.username === currentUser?.username
   );
 
-  console.log(loggedInUser, "log in ");
-
   const navigate = useNavigate();
-
-  // console.log(users, "suggested all users");
-  // console.log(currentUser, "suggested current user");
 
   const filterUsers = users?.filter(
     (user) => user.username !== loggedInUser.username
   );
-  // console.log(filterUsers, "users filtered once");
 
   const usersToBeSuggested = filterUsers?.filter(
     (singleUser) =>
@@ -34,20 +28,17 @@ export const SuggestedUsers = () => {
       )
   );
 
-  console.log(users, "following");
-  console.log(currentUser, "current user");
-
-  // console.log(usersToBeSuggested, "suggested");
-
-  // console.log(usersToBeSuggested, "suggest users logic?");
-  // console.log(currentUser?.following);
   return (
     <div className="suggested-sidebar">
       <h1>Suggested Users</h1>
       {usersToBeSuggested?.map((user) => (
         <div className="suggested-user-card">
           <div className="user-info">
-            <img src={user?.profileImg} alt="avatar" />
+            <img
+              src={user?.profileImg}
+              alt="avatar"
+              onClick={() => navigate(`/profile/${user?._id}`)}
+            />
             <div
               className="name-info"
               onClick={() => navigate(`/profile/${user?._id}`)}

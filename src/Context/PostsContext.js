@@ -6,6 +6,8 @@ import {
   likePostService,
   dislikePostService,
   createNewPostService,
+  deletePostService,
+  editPostService,
 } from "../Services/PostServices";
 
 export const PostsContext = createContext();
@@ -16,8 +18,6 @@ export const PostsProvider = ({ children }) => {
     postsReducer,
     initialPostState
   );
-
-  // console.log(postsState, "state from context");
 
   const getAllPosts = async () => {
     try {
@@ -73,8 +73,6 @@ export const PostsProvider = ({ children }) => {
     post?.likes.likedBy.find((item) => item.username === user.username);
 
   const filterPosts = (posts) => {
-    // console.log(posts, "filter posts");
-
     if (postsState?.filterType === "latest") {
       return posts?.sort(
         (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
@@ -100,6 +98,34 @@ export const PostsProvider = ({ children }) => {
     }
   };
 
+  const deletePost = async (postId) => {
+    try {
+      const {
+        status,
+        data: { posts },
+      } = await deletePostService(postId, token);
+      if (status === 201) {
+        postsDispatch({ type: "DELETE_POST", payload: posts });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const editPost = async (postId, { content, mediaURL, mediaAlt }) => {
+    try {
+      const {
+        status,
+        data: { posts },
+      } = await editPostService(postId, content, mediaURL, mediaAlt, token);
+      if (status === 201) {
+        postsDispatch({ type: "EDIT_POST", payload: posts });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getAllPosts();
   }, []);
@@ -114,6 +140,7 @@ export const PostsProvider = ({ children }) => {
         likedByUser,
         filterPosts,
         createPost,
+        deletePost,
       }}
     >
       {children}

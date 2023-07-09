@@ -45,6 +45,13 @@ export const users = [
         username: "imkeeley",
         profileImg: "https://i.postimg.cc/TwxSHbBk/keeley.jpg",
       },
+      {
+        _id: 114,
+        firstName: "Syed",
+        lastName: "Mustassim",
+        username: "mustassim",
+        profileImg: "https://i.postimg.cc/fTYff9yW/urahichi.gif",
+      },
     ],
     following: [
       {
@@ -117,6 +124,13 @@ export const users = [
         lastName: "Jones",
         username: "imkeeley",
         profileImg: "https://i.postimg.cc/TwxSHbBk/keeley.jpg",
+      },
+      {
+        _id: 114,
+        firstName: "Syed",
+        lastName: "Mustassim",
+        username: "mustassim",
+        profileImg: "https://i.postimg.cc/fTYff9yW/urahichi.gif",
       },
     ],
     following: [

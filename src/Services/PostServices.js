@@ -17,19 +17,23 @@ export const createNewPostService = async (
     { headers: { authorization: encodedToken } }
   );
 
-export const editPostService = async (postData, encodedToken) =>
+export const editPostService = async (
+  postId,
+  content,
+  mediaURL,
+  mediaAlt,
+  encodedToken
+) =>
   await axios.post(
-    `/api/posts/edit/${postData._id}`,
-    { postData },
+    `/api/posts/edit/${postId}`,
+    { postData: { content, mediaURL, mediaAlt } },
     { headers: { authorization: encodedToken } }
   );
 
 export const deletePostService = async (postId, encodedToken) =>
-  await axios.delete(
-    `/api/user/posts/${postId}`,
-    {},
-    { headers: { authorization: encodedToken } }
-  );
+  await axios.delete(`/api/posts/${postId}`, {
+    headers: { authorization: encodedToken },
+  });
 
 export const likePostService = async (postId, encodedToken) =>
   await axios.post(

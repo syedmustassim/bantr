@@ -22,31 +22,24 @@ export const Profile = () => {
   const {
     usersState: { users, user },
     getUserByUserId,
+    handleFollowUser,
+    handleUnfollowUser,
   } = useUsers();
-
-  // console.log(user, "user");
 
   useEffect(() => {
     getUserByUserId(userId);
   }, [userId, currentUser]);
 
-  console.log(user, "user obj");
-
   const selectedUser = users.find(
     (item) => item._id.toString() === userId.toString()
   );
 
-  // console.log(selectedUser, "selected user");
-  // console.log(currentUser, "lol");
-
-  // console.log(selectedUser.username === currentUser?.username, "boolean check");
-
-  // useEffect(() => {
-  //   getUserByUserId(userId);
-  // }, [userId, currentUser]);
-
   const selectedUserPosts = posts?.filter(
     (item) => item?.username === selectedUser?.username
+  );
+
+  const isUserFollowed = user?.followers?.find(
+    (item) => item.username === currentUser.username
   );
 
   document.title = `${selectedUser?.firstName} ${selectedUser?.lastName}`;
@@ -72,8 +65,20 @@ export const Profile = () => {
 
               {selectedUser?.username === currentUser?.username ? (
                 <button className="edit-profile-btn"> Edit Profile</button>
+              ) : isUserFollowed ? (
+                <button
+                  onClick={() => handleUnfollowUser(selectedUser?._id)}
+                  className="unfollow-btn"
+                >
+                  Unfollow
+                </button>
               ) : (
-                <button>Unfollow</button>
+                <button
+                  onClick={() => handleFollowUser(selectedUser?._id)}
+                  className="follow-btn"
+                >
+                  Follow
+                </button>
               )}
             </div>
             <div className="profile-heading-secondary">

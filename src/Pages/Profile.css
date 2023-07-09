@@ -133,3 +133,36 @@
   background: black;
   color: rgb(138, 128, 229);
 }
+
+.follow-btn{
+  border: none;
+  outline: none;
+  transition: 0.5s;
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 10px;
+
+}
+
+.unfollow-btn{
+  border: 1px solid rgb(231, 51, 51);
+  outline: none;
+  transition: 0.5s ease;
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+.follow-btn:hover{
+  cursor: pointer;
+  background: rgb(231, 234, 56);
+  color: rgb(18, 17, 17);
+  box-shadow: 0 0 5px 2px rgb(231, 234, 56);
+}
+
+.unfollow-btn:hover{
+  cursor: pointer;
+  background: rgb(231, 51, 51);
+  color: rgb(255, 253, 253);
+  box-shadow: 0 0 5px 2px rgb(231, 51, 51);
+}
