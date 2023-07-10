@@ -2,10 +2,10 @@ import axios from "axios";
 
 export const getAllUsersService = async () => await axios.get("/api/users");
 
-export const editProfileService = async (userData, encodedToken) =>
+export const editProfileService = async (editInput, encodedToken) =>
   await axios.post(
     "/api/users/edit",
-    { userData },
+    { userData: editInput },
     { headers: { authorization: encodedToken } }
   );
 

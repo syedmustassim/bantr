@@ -7,7 +7,9 @@ import { PostCard } from "../Components/PostCard";
 
 import "./Profile.css";
 import { SuggestedUsers } from "../Components/SuggestedUsers";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Modal } from "../Components/Modal";
+import { EditUserModal } from "../Components/EditUserModal";
 
 export const Profile = () => {
   const { userId } = useParams();
@@ -25,6 +27,16 @@ export const Profile = () => {
     handleFollowUser,
     handleUnfollowUser,
   } = useUsers();
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   useEffect(() => {
     getUserByUserId(userId);
@@ -64,7 +76,10 @@ export const Profile = () => {
               </h1>
 
               {selectedUser?.username === currentUser?.username ? (
-                <button className="edit-profile-btn"> Edit Profile</button>
+                <button className="edit-profile-btn" onClick={openModal}>
+                  {" "}
+                  Edit Profile
+                </button>
               ) : isUserFollowed ? (
                 <button
                   onClick={() => handleUnfollowUser(selectedUser?._id)}
@@ -103,6 +118,11 @@ export const Profile = () => {
         </div>
         <SuggestedUsers />
       </div>
+      {isModalOpen && (
+        <Modal isOpen={openModal}>
+          <EditUserModal selectedUser={selectedUser} isClosed={closeModal} />
+        </Modal>
+      )}
     </div>
   );
 };

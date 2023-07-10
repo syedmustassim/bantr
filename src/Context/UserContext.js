@@ -9,6 +9,7 @@ import {
   getByUserIdService,
   removeBookmarkService,
   unfollowUserService,
+  editProfileService,
 } from "../Services/UserServices";
 
 export const UserContext = createContext();
@@ -124,6 +125,21 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  const editUser = async (editInput) => {
+    try {
+      const {
+        status,
+        data: { user },
+      } = await editProfileService(editInput, token);
+      if (status === 201) {
+        usersDispatch({ type: "EDIT_USER", payload: user });
+        setCurrentUser(user);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getAllUsers();
   }, []);
@@ -141,6 +157,7 @@ export const UserProvider = ({ children }) => {
         getUserByUserId,
         handleFollowUser,
         handleUnfollowUser,
+        editUser,
       }}
     >
       {children}

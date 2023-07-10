@@ -37,6 +37,14 @@ export const userReducer = (state, action) => {
           return updatedUserValue ? updatedUserValue : user;
         }),
       };
+
+    case "EDIT_USER":
+      return {
+        ...state,
+        users: state?.users?.map((item) =>
+          item?._id === action?.payload?._id ? action?.payload : item
+        ),
+      };
     default:
       return state;
   }
