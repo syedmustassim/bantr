@@ -377,7 +377,7 @@ export const users = [
     username: "mustassim",
     password: "mustassim123",
     profileImg: "https://i.postimg.cc/fTYff9yW/urahichi.gif",
-    backgroundImg: "https://i.postimg.cc/59ndTr3q/ted-henry.jpg",
+    backgroundImg: "https://i.postimg.cc/bYkXBpxM/mostCig.gif",
     bio: "Every man is the artisan of his own fortune",
     createdAt: formatDate(),
     updatedAt: formatDate(),
